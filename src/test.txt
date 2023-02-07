@@ -1,0 +1,51 @@
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+
+  const [ input , setInput ] = useState([])
+  const [ todo, setTodo ] = useState([])
+  const [ done, setDone ] = useState([])
+
+  function addItemToToDo(e){
+    e.preventDefault();
+    setTodo([...todo, input])
+  }
+
+  function addItemToDone(e, index){
+    e.preventDefault();
+    setDone([...done, todo[index]])
+    setTodo(todo.filter((item, id) => id !== index ))
+  }
+
+  return (
+    <div className="App">
+
+        <form onSubmit={(e) => addItemToToDo(e)} >
+          <input type="text" onChange={(e) => setInput(e.target.value) } value={input}/>
+          <button type='submit' >Ajouter</button>
+        </form>
+
+        <div>
+            <h2>To do:</h2>
+            <ul>
+              { todo.map((item, index) => 
+                <li key={index}>
+                  <input type="checkbox" id={index} onChange={(e) => addItemToDone(e, index)}/>
+                  <label htmlFor={index}>{item}</label>
+                </li>
+              ) }
+            </ul>          
+        </div>
+        <div>
+          <h2>Done: </h2>
+          <ul>
+            { done.map(item =>  <li>{item}</li>  ) }
+          </ul>
+        </div>
+
+    </div>
+  );
+}
+
+export default App;

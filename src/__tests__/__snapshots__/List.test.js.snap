@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test list component Empty list 1`] = `
+<div
+  data-testid="list-content"
+>
+  <h2
+    data-testid="todo-header"
+  >
+    To do
+  </h2>
+  <ul />
+</div>
+`;
+
+exports[`Test list component add content to done list 1`] = `
+<div
+  data-testid="list-content"
+>
+  <h2 />
+  <ul>
+    <li>
+      desc
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Test list component add content to done list 2`] = `"desc"`;
